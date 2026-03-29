@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Mono:wght@300;400&display=swap"
+    rel="stylesheet">
+  <title>Memories❤️</title>
+  <style>
+    :root {
+      --ink: #1a0f05;
+      --ink-soft: #3d2510;
+      --rust: #8b4513;
+      --rust-light: #a0522d;
+      --gold: #c8973a;
+      --sand: #e8d5b0;
+      --paper: #f2e8d5;
+      --paper-dark: #e0cba8;
+      --paper-mid: #ead5b0;
+      --tape: rgba(210, 185, 130, 0.6);
+      --shadow: rgba(26, 15, 5, 0.22);
+      --card-bg: #fdf6e8;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      font-weight: bold !important;
+      text-transform: none !important;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', Georgia, serif;
+      background-color: var(--paper);
+      background-image: url('a1.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: var(--ink);
+    }
+
+    /* ── NAV ── */
+    .site-nav {
+      background: linear-gradient(90deg, #1a0f05 0%, #2c1a08 50%, #1a0f05 100%);
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 0 rgba(200, 151, 58, 0.35), 0 4px 24px var(--shadow);
+    }
+
+    .site-nav::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 25%, var(--rust) 55%, var(--gold) 80%, transparent 100%);
+    }
+
+    .nav-brand {
+      font-family: 'Reenie Beanie', cursive;
+      font-size: 1.9rem;
+      color: var(--sand);
+      text-decoration: none;
+      letter-spacing: 1px;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .nav-brand:hover {
+      color: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      color: rgba(232, 213, 181, 0.7);
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 3px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--sand);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-search {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(232, 213, 181, 0.2);
+      border-radius: 4px;
+      color: var(--sand);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      padding: 5px 10px;
+      outline: none;
+      width: 140px;
+      transition: border-color 0.2s, width 0.3s;
+    }
+
+    .nav-search::placeholder {
+      color: rgba(232, 213, 181, 0.35);
+    }
+
+    .nav-search:focus {
+      border-color: var(--rust-light);
+      width: 190px;
+    }
+
+    .btn-login {
+      background: linear-gradient(135deg, var(--rust) 0%, var(--rust-light) 100%);
+      border: none;
+      color: #fff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-login:hover {
+      background: var(--rust-light);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid rgba(232, 213, 181, 0.2);
+      color: rgba(232, 213, 181, 0.6);
+      border-radius: 3px;
+      width: 30px;
+      height: 30px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--rust-light);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 4rem 2rem 2rem;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-eyebrow::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--rust), transparent);
+      max-width: 120px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(3.2rem, 8vw, 6rem);
+      line-height: 0.95;
+      color: var(--ink);
+      margin: 0 0 1rem;
+      font-weight: 700;
+    }
+
+    .hero h1 em {
+      color: var(--rust);
+      font-style: normal;
+      display: block;
+    }
+
+    .hero-sub {
+      font-family: 'Crimson Pro', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+      max-width: 480px;
+      line-height: 1.6;
+    }
+
+    /* ── MAIN GRID ── */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2rem;
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    @media (max-width: 760px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── JOURNAL SECTION LABEL ── */
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-head h2 {
+      font-family: 'Reenie Beanie', cursive;
+      font-size: 1.9rem;
+      color: var(--ink);
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .section-head .tally {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rust);
+      padding: 2px 8px;
+      border: 1px solid var(--rust);
+      border-radius: 2px;
+    }
+
+    /* ── MEMORY CARDS ── */
+    /* tape corner effect */
+    .memory-card {
+      background: var(--card-bg);
+      border-radius: 2px;
+      box-shadow: 2px 4px 18px var(--shadow), 0 1px 3px rgba(0, 0, 0, 0.08);
+      overflow: visible;
+      position: relative;
+      margin-bottom: 1.6rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .memory-card:hover {
+      transform: rotate(0deg) translateY(-3px);
+      box-shadow: 4px 10px 32px var(--shadow);
+    }
+
+    /* subtle tilt */
+    .memory-card:nth-child(odd) {
+      transform: rotate(-0.4deg);
+    }
+
+    .memory-card:nth-child(even) {
+      transform: rotate(0.3deg);
+    }
+
+    .memory-card:nth-child(odd):hover {
+      transform: rotate(-0.4deg) translateY(-3px);
+    }
+
+    .memory-card:nth-child(even):hover {
+      transform: rotate(0.3deg) translateY(-3px);
+    }
+
+    /* tape corners */
+    .memory-card::before,
+    .memory-card::after {
+      content: '';
+      position: absolute;
+      width: 38px;
+      height: 14px;
+      background: var(--tape);
+      border-radius: 1px;
+      z-index: 2;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    }
+
+    .memory-card::before {
+      top: -7px;
+      left: 18px;
+      transform: rotate(-2deg);
+    }
+
+    .memory-card::after {
+      top: -7px;
+      right: 22px;
+      transform: rotate(1.5deg);
+    }
+
+    .mc-img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mc-img-placeholder {
+      width: 100%;
+      height: 210px;
+      background: linear-gradient(135deg, var(--paper-dark) 0%, var(--sand) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      color: rgba(74, 47, 26, 0.35);
+    }
+
+    .mc-body {
+      padding: 1rem 1.2rem 1.1rem;
+    }
+
+    .mc-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 5px;
+    }
+
+    .mc-title {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0 0 5px;
+    }
+
+    .mc-text {
+      font-size: 0.97rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+      font-style: italic;
+      font-weight: 300;
+      margin: 0;
+    }
+
+    .empty-state {
+      background: rgba(253, 246, 232, 0.6);
+      border: 1.5px dashed rgba(184, 76, 42, 0.3);
+      border-radius: 2px;
+      padding: 3.5rem 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .empty-state h3 {
+      font-family: 'Reenie Beanie', cursive;
+      font-size: 2.2rem;
+      color: var(--ink);
+      margin: 0 0 10px;
+    }
+
+    .empty-state p {
+      font-style: italic;
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .filmstrip {
+      display: flex;
+      gap: 1.4rem;
+      overflow-x: auto;
+      padding: 0.8rem 0.8rem 1.5rem;
+      margin: -0.8rem -0.8rem 1.6rem -0.8rem;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: var(--rust-light) transparent;
+    }
+
+    .filmstrip::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .filmstrip::-webkit-scrollbar-thumb {
+      background: var(--rust-light);
+      border-radius: 3px;
+    }
+
+    .filmstrip .memory-card {
+      flex: 0 0 240px;
+      scroll-snap-align: start;
+      margin-bottom: 0;
+      /* Override default spacing for horizontal layout */
+    }
+
+    .filmstrip .mc-img-placeholder {
+      height: 130px;
+      font-size: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      .filmstrip .memory-card {
+        flex: 0 0 82%;
+      }
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .add-btn {
+      display: block;
+      text-align: center;
+      background: var(--ink);
+      color: var(--sand);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 13px 20px;
+      border-radius: 2px;
+      text-decoration: none;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 var(--gold);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .add-btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 var(--gold);
+      color: #fff;
+    }
+
+    /* ── CALENDAR WIDGET ── */
+    .cal-wrap {
+      background: var(--card-bg);
+      border-radius: 2px;
+      box-shadow: 2px 4px 18px var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* tape on calendar too */
+    .cal-wrap::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1deg);
+      width: 52px;
+      height: 14px;
+      background: var(--tape);
+      border-radius: 1px;
+      z-index: 5;
+    }
+
+    .cal-label {
+      font-family: 'Reenie Beanie', cursive;
+      font-size: 1.2rem;
+      color: var(--ink-soft);
+      padding: 10px 14px 0;
+    }
+
+    .cal-wrap iframe {
+      width: 100%;
+      height: 330px;
+      border: none;
+      display: block;
+    }
+
+    /* ── QUOTE ── */
+    .quote-block {
+      border-left: 3px solid var(--rust);
+      padding: 0.6rem 1rem;
+      background: rgba(184, 76, 42, 0.04);
+    }
+
+    .quote-block blockquote {
+      font-family: 'Crimson Pro', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      margin: 0 0 5px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .quote-block cite {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--rust);
+    }
+
+    /* ── LOGIN MODAL ── */
+    .modal-content {
+      border: none;
+      border-radius: 2px;
+      background: var(--paper);
+      box-shadow: 0 20px 60px var(--shadow);
+    }
+
+    .modal-header {
+      background: var(--ink);
+      border: none;
+      padding: 1rem 1.4rem;
+    }
+
+    .modal-title {
+      font-family: 'Reenie Beanie', cursive;
+      font-size: 1.6rem;
+      color: var(--sand);
+      font-weight: 400;
+    }
+
+    .modal-header .btn-close {
+      filter: invert(1);
+    }
+
+    .modal-body {
+      padding: 1.6rem;
+      background: var(--paper);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23f7efe0'/%3E%3Ccircle cx='1' cy='1' r='0.4' fill='%23c8a87a' opacity='0.15'/%3E%3C/svg%3E");
+    }
+
+    .modal-body label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 4px;
+    }
+
+    .modal-body .form-control {
+      border: 1px solid var(--sand);
+      border-radius: 2px;
+      background: var(--card-bg);
+      font-family: 'Crimson Pro', serif;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    .modal-body .form-control:focus {
+      border-color: var(--rust);
+      box-shadow: 0 0 0 2px rgba(184, 76, 42, 0.12);
+    }
+
+    .btn-submit {
+      background: var(--ink);
+      color: var(--sand);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 2px;
+      width: 100%;
+      box-shadow: 3px 3px 0 var(--gold);
+      transition: transform 0.15s, box-shadow 0.15s;
+      cursor: pointer;
+    }
+
+    .btn-submit:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--gold);
+    }
+
+    /* ── TOAST NOTIF ── */
+    .toast-strip {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(60px);
+      background: var(--ink);
+      color: var(--sand);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      padding: 10px 22px;
+      border-radius: 2px;
+      box-shadow: 3px 3px 0 var(--gold);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    .toast-strip.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- ── NAV ── -->
+  <nav class="site-nav">
+    <a class="nav-brand" href="#">memories❤️</a>
+    <ul class="nav-links">
+      <li><a href="#" class="active">home</a></li>
+      <li><a href="template-editor.html">templates</a></li>
+      <li><a href="#">about</a></li>
+    </ul>
+    <div class="nav-right">
+      <input type="search" class="nav-search" placeholder="search entries…">
+      <button class="theme-toggle" id="themeToggler" title="toggle theme">🌃</button>
+      <button class="btn-login" data-bs-toggle="modal" data-bs-target="#loginModal">sign in</button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="hero-eyebrow">photo journal</div>
+    <h1>every day<em>deserves a page.</em></h1>
+    <p class="hero-sub">A place to keep the small things — the light through a window, a face mid-laugh, a meal that
+      tasted like home.</p>
+  </div>
+
+  <!-- ── MAIN ── -->
+  <div class="main-grid">
+    <div class="journal-col" id="journalFeed">
+      <!-- Injected dynamically by JavaScript -->
+    </div>
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar">
+      <a href="template-editor.html" class="add-btn">+ new entry</a>
+
+      <div class="cal-wrap">
+        <div class="cal-label">this month</div>
+        <iframe src="calender.html" title="Calendar"></iframe>
+      </div>
+
+      <div class="quote-block">
+        <blockquote>"We take photos as a return ticket to a moment otherwise gone."</blockquote>
+        <cite>— Katie Hopkins</cite>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ── LOGIN MODAL ── -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:400px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">sign in</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="loginEmail">email</label>
+            <input type="email" class="form-control" id="loginEmail" placeholder="you@example.com">
+          </div>
+          <div class="mb-4">
+            <label for="loginPass">password</label>
+            <input type="password" class="form-control" id="loginPass" placeholder="••••••••">
+          </div>
+          <button class="btn-submit" onclick="showToast('coming soon — stay tuned ✦')">log in</button>
+          <p style="text-align:center;margin-top:1rem;font-size:0.82rem;color:#a07850;font-style:italic;">
+            don't have an account? <a href="#" style="color:var(--rust);">create one</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-strip" id="toast"></div>
+
+  <script>
+    // theme toggle
+    document.getElementById('themeToggler').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+    // tiny toast
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2800);
+    }
+
+    // clear any old entries on load
+    localStorage.removeItem('memoryEntries');
+
+    // dynamic journal feed
+    function renderJournalFeed() {
+      const feed = document.getElementById('journalFeed');
+      const entries = JSON.parse(localStorage.getItem('memoryEntries') || '[]');
+
+      if (entries.length === 0) {
+        feed.innerHTML = `
+          <div class="section-head">
+            <h2>your journal</h2>
+          </div>
+          <div class="empty-state">
+            <h3>a blank page</h3>
+            <p>You haven't captured any memories yet. The best time to start is now.</p>
+            <a href="template-editor.html" class="add-btn" style="max-width:200px;margin:0 auto;display:block;">+ create entry</a>
+          </div>
+        `;
+        return;
+      }
+
+      let html = `
+        <div class="section-head">
+          <h2>recent entries</h2>
+          <span class="tally">${entries.length} total</span>
+        </div>
+      `;
+
+      entries.forEach(e => {
+        let dateStr = e.date;
+        try {
+          const d = new Date(e.date + 'T00:00:00');
+          dateStr = d.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        } catch (err) { }
+
+        const safeEmoji = e.emoji ? e.emoji.replace(/'/g, "\\'") : '📷';
+
+        let mediaHtml = '';
+        if (e.photos && e.photos.length > 0) {
+          mediaHtml = `<img src="${e.photos[0]}" class="mc-img" alt="Memory Photo" onerror="this.outerHTML='<div class=\\'mc-img-placeholder\\'>${safeEmoji}</div>'">`;
+        } else {
+          mediaHtml = `<div class="mc-img-placeholder">${e.emoji || '📷'}</div>`;
+        }
+
+        html += `
+          <div class="memory-card">
+            ${mediaHtml}
+            <div class="mc-body">
+              <div class="mc-date">${dateStr}${e.mood ? ' &middot; ' + e.mood : ''}</div>
+              <h3 class="mc-title">${e.emoji || ''} ${e.theme || 'Just Today'}</h3>
+              <p class="mc-text">${e.caption || 'No words needed.'}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      feed.innerHTML = html;
+    }
+
+    // kick off
+    renderJournalFeed();
+
+    // apply sentence case to all text in body
+    function capitalizeSentence(node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        let text = node.nodeValue;
+        let newText = text.replace(/(^\s*|\.\s+|\!\s+|\?\s+)([a-z])/g, (m, space, letter) => space + letter.toUpperCase());
+        if (text !== newText) node.nodeValue = newText;
+      } else if (node.nodeType === Node.ELEMENT_NODE && node.nodeName !== 'SCRIPT' && node.nodeName !== 'STYLE') {
+        node.childNodes.forEach(capitalizeSentence);
+        ['placeholder', 'title'].forEach(attr => {
+          if (node.hasAttribute(attr)) {
+             let txt = node.getAttribute(attr);
+             node.setAttribute(attr, txt.replace(/(^\s*|\.\s+|\!\s+|\?\s+)([a-z])/g, (m, s, l) => s + l.toUpperCase()));
+          }
+        });
+      }
+    }
+    capitalizeSentence(document.body);
+  </script>
+</body>
+
+</html>
