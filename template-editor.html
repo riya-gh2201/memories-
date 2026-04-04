@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Studio</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital@1&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="temp.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <script src="index.js"></script>
+  <nav class="site-nav">
+    <a class="nav-brand" href="#">memories❤️</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="template-editor.html" class="active">Templates</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <input type="search" class="nav-search" placeholder="search entries…">
+      <button class="btn-login" data-bs-toggle="modal" data-bs-target="#loginModal">sign in</button>
+    </div>
+  </nav>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h1>Template Studio</h1>
+        <p>Design · Edit · Create</p>
+      </div>
+
+      <!-- Templates -->
+      <div class="section">
+        <div class="section-label">Choose Template</div>
+        <div class="template-grid" id="templateGrid"></div>
+      </div>
+
+      <!-- Upload photo -->
+      <div class="section">
+        <div class="section-label">Your Photo</div>
+        <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+          <div class="upload-icon">🖼</div>
+          <p>Click to <span>upload your photo</span><br>PNG, JPG, WEBP</p>
+        </div>
+        <input type="file" id="fileInput" accept="image/*">
+
+        <div class="photo-controls" style="margin-top:16px;" id="photoControls">
+          <div class="control-note">Drag the photo in the preview with your cursor. Use the mouse wheel to resize it,
+            and hold Shift while scrolling to change opacity.</div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="section">
+        <div class="section-label">Text</div>
+        <div class="text-controls">
+          <textarea id="textInput" placeholder="Type your text here…"></textarea>
+
+          <div class="text-style-row">
+            <select id="fontFamily">
+              <option value="'DM Sans', sans-serif">DM Sans</option>
+              <option value="'Cormorant Garamond', serif">Cormorant</option>
+              <option value="'Playfair Display', serif">Playfair</option>
+              <option value="Georgia, serif">Georgia</option>
+              <option value="monospace">Monospace</option>
+            </select>
+            <button class="style-btn" id="boldBtn" onclick="toggleStyle('bold')">B</button>
+            <button class="style-btn" id="italicBtn" onclick="toggleStyle('italic')"><i>I</i></button>
+          </div>
+
+          <div class="font-size-row">
+            <button class="fs-btn" onclick="changeFontSize(-2)">−</button>
+            <div class="fs-display" id="fsSizeDisplay">28px</div>
+            <button class="fs-btn" onclick="changeFontSize(2)">+</button>
+            <div style="font-size:0.65rem;color:var(--text-muted);margin-left:8px;">size</div>
+          </div>
+
+          <div>
+            <div class="section-label" style="margin-bottom:8px;">Text Color</div>
+            <div class="color-row" id="colorRow">
+              <div class="color-dot active" data-color="#ffffff" style="background:#ffffff"></div>
+              <div class="color-dot" data-color="#000000"
+                style="background:#000000;border-color:rgba(255,255,255,0.15)"></div>
+              <div class="color-dot" data-color="#c9a96e" style="background:#c9a96e"></div>
+              <div class="color-dot" data-color="#f4a7b9" style="background:#f4a7b9"></div>
+              <div class="color-dot" data-color="#a8c5b5" style="background:#a8c5b5"></div>
+              <div class="color-dot" data-color="#9b8fa8" style="background:#9b8fa8"></div>
+              <div class="color-dot" data-color="#e8d5b5" style="background:#e8d5b5"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-label" style="margin-bottom:8px;">Text Placement</div>
+            <div class="control-note">Click or drag the text in the preview to place it with your cursor.</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="download-btn" onclick="downloadImage()">⬇ Download Image</button>
+    </div>
+
+    <!-- CANVAS AREA -->
+    <div class="canvas-area">
+      <h2>Preview</h2>
+      <div class="canvas-wrapper" id="canvasWrapper">
+        <canvas id="mainCanvas" width="600" height="1067"></canvas>
+      </div>
+      <div class="canvas-hint">Use your cursor to drag the photo or text directly in the preview</div>
+    </div>
+  </div>
+
+  <script src="temp.js"></script>
+</body>
+
+</html>
