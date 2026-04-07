@@ -2,98 +2,113 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="index.css">
-  <!-- <link
-    href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Mono:wght@300;400&display=swap"
-    rel="stylesheet"> -->
-  <title>Memories❤️</title>
-  <style>
-
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <title>Memories❤️</title>
 </head>
 
 <body>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="index.js"></script>
-
-  <!-- ── NAV ── -->
-  <nav class="site-nav">
-    <a class="nav-brand" href="#">memories❤️</a>
-    <ul class="nav-links">
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="template-editor.html">Templates</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div class="nav-right">
-      <input type="search" class="nav-search" placeholder="search entries…">
-      <button class="btn-login" data-bs-toggle="modal" data-bs-target="#loginModal">sign in</button>
-    </div>
-  </nav>
-
-  <!-- ── HERO ── -->
-  <div class="hero">
-    <div class="hero-eyebrow">photo journal</div>
-    <h1>every day<em>deserves a page.</em></h1>
-    <p class="hero-sub">A place to keep the small things — the light through a window, a face mid-laugh, a meal that
-      tasted like home.</p>
-  </div>
-
-  <!-- ── MAIN ── -->
-  <div class="main-grid">
-    <div class="journal-col" id="journalFeed">
-      <!-- Injected dynamically by JavaScript -->
-    </div>
-
-    <!-- ── SIDEBAR ── -->
-    <aside class="sidebar">
-      <a href="template-editor.html" class="add-btn">+ new entry</a>
-
-      <div class="cal-wrap">
-        <div class="cal-label">this month</div>
-        <iframe src="calender.html" title="Calendar"></iframe>
-      </div>
-
-      <div class="quote-block">
-        <blockquote>"We take photos as a return ticket to a moment otherwise gone."</blockquote>
-        <cite>— Katie Hopkins</cite>
-      </div>
-    </aside>
-  </div>
-
-  <!-- ── LOGIN MODAL ── -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" style="max-width:400px;">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel">sign in</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- ── NAV ── -->
+    <nav class="site-nav">
+        <a class="nav-brand" href="#">memories❤️</a>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="template-editor.html">Templates</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <input type="search" class="nav-search" placeholder="search entries…">
+            <button class="btn-login" data-bs-toggle="modal" data-bs-target="#loginModal">sign in</button>
         </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="loginEmail">email</label>
-            <input type="email" class="form-control" id="loginEmail" placeholder="you@example.com">
-          </div>
-          <div class="mb-4">
-            <label for="loginPass">password</label>
-            <input type="password" class="form-control" id="loginPass" placeholder="••••••••">
-          </div>
-          <button class="btn-submit" onclick="showToast('coming soon — stay tuned ✦')">log in</button>
-          <p style="text-align:center;margin-top:1rem;font-size:0.82rem;color:#a07850;font-style:italic;">
-            don't have an account? <a href="#" style="color:var(--rust);">create one</a>
-          </p>
+    </nav>
+
+    <!-- ── TOP BAND ── -->
+    <div class="top-band">
+
+        <!-- LEFT: compact hero + calendar -->
+        <div class="top-left">
+            <div class="hero">
+                <div class="hero-eyebrow">photo journal</div>
+                <h1>every day<em>deserves a page.</em></h1>
+                <p class="hero-sub">A place to keep the small things — the light through a window, a face mid-laugh, a
+                    meal that tasted like home.</p>
+                <a href="template-editor.html" class="add-btn hero-btn">+ new entry</a>
+            </div>
+            <div class="cal-wrap">
+                <div class="cal-label">this month</div>
+                <iframe src="calender.html" title="Calendar"></iframe>
+            </div>
         </div>
-      </div>
+
+        <div id="carouselExample" class="carousel slide" style="width: 100%; height: 100%;">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="p1.jpeg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="p2.jpeg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="p3.jpeg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
     </div>
-  </div>
 
-  <div class="toast-strip" id="toast"></div>
+    <!-- ── MAIN GRID ── -->
+    <div class="main-grid">
+        <div class="journal-col" id="journalFeed"></div>
+        <aside class="sidebar">
+            <div class="quote-block">
+                <blockquote>"We take photos as a return ticket to a moment otherwise gone."</blockquote>
+                <cite>— Katie Hopkins</cite>
+            </div>
+        </aside>
+    </div>
 
+    <!-- ── LOGIN MODAL ── -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width:400px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">sign in</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="loginEmail">email</label>
+                        <input type="email" class="form-control" id="loginEmail" placeholder="you@example.com">
+                    </div>
+                    <div class="mb-4">
+                        <label for="loginPass">password</label>
+                        <input type="password" class="form-control" id="loginPass" placeholder="••••••••">
+                    </div>
+                    <button class="btn-submit" onclick="showToast('coming soon — stay tuned ✦')">log in</button>
+                    <p style="text-align:center;margin-top:1rem;font-size:0.82rem;color:#a07850;font-style:italic;">
+                        don't have an account? <a href="#" style="color:var(--rust);">create one</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="toast-strip" id="toast"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
