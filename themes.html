@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Themes — Memories❤️</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:        #1e1208;
+      --ink-soft:   #4a2f1a;
+      --rust:       #b84c2a;
+      --rust-light: #d4724a;
+      --sand:       #e8d5b5;
+      --paper:      #f7efe0;
+      --paper-dark: #ede0c4;
+      --tape:       rgba(220,200,150,0.55);
+      --shadow:     rgba(30,18,8,0.18);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Crimson Pro', Georgia, serif;
+      background: var(--paper);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23f7efe0'/%3E%3Ccircle cx='1' cy='1' r='0.4' fill='%23c8a87a' opacity='0.18'/%3E%3Ccircle cx='3' cy='3' r='0.3' fill='%23b89060' opacity='0.12'/%3E%3C/svg%3E");
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: var(--ink);
+    }
+
+    /* ── NAV ── */
+    .site-nav {
+      background: var(--ink);
+      padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 0 rgba(184,76,42,0.4), 0 4px 20px var(--shadow);
+    }
+    .site-nav::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--rust) 0%, transparent 40%, transparent 60%, var(--rust) 100%);
+    }
+    .nav-brand {
+      font-family: 'Reenie Beanie', cursive;
+      font-size: 1.9rem; color: var(--sand);
+      text-decoration: none; letter-spacing: 1px; line-height: 1;
+    }
+    .nav-brand:hover { color: #fff; }
+    .nav-links { display:flex; align-items:center; gap:0.2rem; list-style:none; margin:0; padding:0; }
+    .nav-links a {
+      color: rgba(232,213,181,0.7); text-decoration: none;
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 6px 12px; border-radius: 3px; transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--sand); background: rgba(255,255,255,0.07); }
+    .back-link {
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: rgba(232,213,181,0.6); text-decoration: none;
+      border: 1px solid rgba(232,213,181,0.2); padding: 5px 12px; border-radius: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .back-link:hover { color: var(--sand); border-color: var(--rust-light); }
+
+    /* ── PAGE TITLE AREA ── */
+    .page-top {
+      max-width: 900px; margin: 0 auto;
+      padding: 3rem 2rem 1.5rem;
+    }
+    .page-top .date-stamp {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--rust);
+      margin-bottom: 0.6rem; display: flex; align-items: center; gap: 10px;
+    }
+    .page-top .date-stamp::after {
+      content: '';flex:1; height:1px;
+      background: linear-gradient(90deg, var(--rust), transparent);
+      max-width: 80px;
+    }
+    .page-top h1 {
+      font-family: 'Reenie Beanie', cursive;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      line-height: 1; margin: 0 0 0.5rem; font-weight: 400; color: var(--ink);
+    }
+    .page-top p {
+      font-style: italic; font-weight: 300;
+      font-size: 1.05rem; color: var(--ink-soft); margin: 0;
+    }
+
+    /* ── THEMES GRID ── */
+    .themes-wrap {
+      max-width: 1000px; margin: 0 auto;
+      padding: 0 2rem 2rem;
+    }
+
+    /* the cards — polaroid style */
+    .theme-card {
+      background: #fff;
+      border-radius: 1px;
+      padding: 0 0 12px;
+      box-shadow: 2px 4px 16px var(--shadow), 0 1px 3px rgba(0,0,0,0.08);
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.25s, box-shadow 0.25s;
+      overflow: visible;
+    }
+    .theme-card:nth-child(1) { transform: rotate(-1.2deg); }
+    .theme-card:nth-child(2) { transform: rotate(0.8deg); }
+    .theme-card:nth-child(3) { transform: rotate(-0.5deg); }
+    .theme-card:nth-child(4) { transform: rotate(1.1deg); }
+    .theme-card:nth-child(5) { transform: rotate(-0.7deg); }
+    .theme-card:nth-child(6) { transform: rotate(0.4deg); }
+
+    .theme-card:hover {
+      transform: rotate(0deg) translateY(-6px) scale(1.02) !important;
+      box-shadow: 6px 14px 36px var(--shadow);
+      z-index: 5;
+    }
+    /* tape */
+    .theme-card::before {
+      content: '';
+      position: absolute; top: -8px;
+      left: 50%; transform: translateX(-50%) rotate(-1deg);
+      width: 44px; height: 14px;
+      background: var(--tape); border-radius: 1px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      z-index: 3;
+    }
+    .theme-card:nth-child(even)::before { transform: translateX(-50%) rotate(1.5deg); }
+
+    .tc-img {
+      width: 100%; height: 180px;
+      object-fit: cover; display: block;
+      background: var(--paper-dark);
+    }
+    .tc-placeholder {
+      width: 100%; height: 180px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 6px;
+      font-size: 2.5rem; color: rgba(74,47,26,0.4);
+      /* placeholder gets a stamp-style texture */
+      background:
+        repeating-linear-gradient(
+          45deg, rgba(74,47,26,0.03) 0, rgba(74,47,26,0.03) 1px,
+          transparent 1px, transparent 12px
+        ),
+        var(--paper-dark);
+    }
+    .tc-placeholder .ph-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(74,47,26,0.3);
+      margin-top: 2px;
+    }
+
+    /* "PICK" stamp that appears on hover */
+    .tc-stamp {
+      position: absolute; top: 12px; right: 12px;
+      background: var(--rust); color: #fff;
+      font-family: 'DM Mono', monospace; font-size: 0.58rem;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 4px 9px; border-radius: 1px;
+      opacity: 0; transform: scale(0.8) rotate(-3deg);
+      transition: opacity 0.2s, transform 0.2s;
+      z-index: 4;
+    }
+    .theme-card:hover .tc-stamp { opacity: 1; transform: scale(1) rotate(-3deg); }
+
+    .tc-body { padding: 10px 12px 0; }
+    .tc-name {
+      font-family: 'Reenie Beanie', cursive;
+      font-size: 1.3rem; color: var(--ink); margin: 0 0 2px;
+    }
+    .tc-desc {
+      font-family: 'Crimson Pro', serif;
+      font-style: italic; font-weight: 300;
+      font-size: 0.88rem; color: var(--ink-soft); line-height: 1.5; margin: 0;
+    }
+    .tc-tag {
+      display: inline-block; margin-top: 6px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--rust);
+      border: 1px solid rgba(184,76,42,0.35);
+      padding: 1px 7px; border-radius: 1px;
+    }
+
+    /* ── SAVED ENTRIES ── */
+    .saved-wrap {
+      max-width: 1000px; margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+    .saved-wrap h2 {
+      font-family: 'Reenie Beanie', cursive;
+      font-size: 1.8rem; color: var(--ink); font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    .entry-row {
+      background: #fff;
+      box-shadow: 2px 3px 14px var(--shadow);
+      border-radius: 1px;
+      display: flex; align-items: center; gap: 14px;
+      padding: 10px 14px; margin-bottom: 10px;
+      transition: transform 0.2s;
+    }
+    .entry-row:hover { transform: translateX(3px); }
+    .er-thumb {
+      width: 52px; height: 52px; border-radius: 1px;
+      object-fit: cover; flex-shrink: 0;
+      border: 2px solid var(--paper-dark);
+    }
+    .er-emoji {
+      width: 52px; height: 52px; border-radius: 1px;
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      background: var(--paper-dark);
+    }
+    .er-body { flex: 1; min-width: 0; }
+    .er-date {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem;
+      letter-spacing: 1.5px; text-transform: uppercase; color: var(--rust);
+    }
+    .er-title {
+      font-family: 'Reenie Beanie', cursive;
+      font-size: 1.1rem; color: var(--ink); margin: 1px 0;
+    }
+    .er-caption {
+      font-size: 0.85rem; color: var(--ink-soft);
+      font-style: italic; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis;
+    }
+    .er-del {
+      background: none; border: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem; color: rgba(74,47,26,0.3);
+      cursor: pointer; padding: 4px 6px; flex-shrink: 0;
+      transition: color 0.2s;
+    }
+    .er-del:hover { color: var(--rust); }
+    .no-entries {
+      font-style: italic; color: var(--ink-soft);
+      font-size: 0.95rem; text-align: center; padding: 1.2rem 0;
+      font-weight: 300;
+    }
+
+    /* ── MODAL ── */
+    .modal-content {
+      border: none; border-radius: 1px;
+      background: var(--paper);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23f7efe0'/%3E%3Ccircle cx='1' cy='1' r='0.4' fill='%23c8a87a' opacity='0.15'/%3E%3C/svg%3E");
+      box-shadow: 0 30px 80px rgba(30,18,8,0.25);
+    }
+    .modal-header {
+      background: var(--ink); border: none;
+      padding: 1rem 1.4rem;
+    }
+    .modal-title {
+      font-family: 'Reenie Beanie', cursive;
+      font-size: 1.7rem; color: var(--sand); font-weight: 400;
+    }
+    .modal-header .btn-close { filter: invert(1); }
+
+    .modal-body { padding: 1.5rem; }
+
+    /* theme strip at top of modal */
+    .modal-theme-strip {
+      background: var(--paper-dark);
+      border-radius: 1px;
+      padding: 10px 14px;
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 1.2rem;
+      border-left: 3px solid var(--rust);
+    }
+    .modal-theme-strip .strip-emoji { font-size: 1.5rem; }
+    .modal-theme-strip .strip-name {
+      font-family: 'Reenie Beanie', cursive;
+      font-size: 1.3rem; color: var(--ink);
+    }
+    .modal-theme-strip .strip-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--rust);
+      margin-left: auto;
+    }
+
+    .modal-body label {
+      font-family: 'DM Mono', monospace; font-size: 0.62rem;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--ink-soft); margin-bottom: 4px; display: block;
+    }
+    .modal-body .form-control,
+    .modal-body .form-select {
+      border: 1px solid rgba(74,47,26,0.2); border-radius: 1px;
+      background: #fff; font-family: 'Crimson Pro', serif;
+      font-size: 1rem; color: var(--ink);
+    }
+    .modal-body .form-control:focus,
+    .modal-body .form-select:focus {
+      border-color: var(--rust);
+      box-shadow: 0 0 0 2px rgba(184,76,42,0.12);
+    }
+
+    /* photo upload zone */
+    .upload-zone {
+      border: 1.5px dashed rgba(74,47,26,0.25);
+      border-radius: 1px;
+      background: rgba(247,239,224,0.6);
+      padding: 1.2rem 1rem;
+      text-align: center; cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .upload-zone:hover { border-color: var(--rust); background: rgba(184,76,42,0.05); }
+    .upload-zone .uz-icon { font-size: 1.6rem; display: block; margin-bottom: 4px; }
+    .upload-zone p {
+      font-family: 'DM Mono', monospace; font-size: 0.62rem;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(74,47,26,0.45); margin: 0;
+    }
+    .upload-zone input { display: none; }
+
+    #photoRow { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .photo-thumb {
+      width: 64px; height: 64px; border-radius: 1px;
+      object-fit: cover; border: 2px solid var(--paper-dark);
+      box-shadow: 1px 2px 6px var(--shadow);
+    }
+
+    .btn-save {
+      background: var(--ink); color: var(--sand);
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      letter-spacing: 2px; text-transform: uppercase;
+      border: none; padding: 11px 22px; border-radius: 1px; width: 100%;
+      box-shadow: 3px 3px 0 var(--rust);
+      transition: transform 0.15s, box-shadow 0.15s;
+      cursor: pointer; margin-top: 1rem;
+    }
+    .btn-save:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 var(--rust);
+      color: #fff;
+    }
+
+    /* ── TOAST ── */
+    .toast-strip {
+      position: fixed; bottom: 20px; left: 50%;
+      transform: translateX(-50%) translateY(60px);
+      background: var(--ink); color: var(--sand);
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      letter-spacing: 1.5px; padding: 10px 22px; border-radius: 1px;
+      box-shadow: 3px 3px 0 var(--rust);
+      opacity: 0; transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      z-index: 9999; pointer-events: none;
+    }
+    .toast-strip.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ── NAV ── -->
+<nav class="site-nav">
+  <a class="nav-brand" href="index.html">memories❤️</a>
+  <ul class="nav-links">
+    <li><a href="index.html">home</a></li>
+    <li><a href="themes.html" class="active">themes</a></li>
+    <li><a href="#">about</a></li>
+  </ul>
+  <a href="index.html" class="back-link">← back to journal</a>
+</nav>
+
+<!-- ── PAGE TOP ── -->
+<div class="page-top">
+  <div class="date-stamp" id="dateStamp">select a date from the calendar</div>
+  <h1>pick a theme</h1>
+  <p>choose the one that matches the mood of the day — then add your photos and words.</p>
+</div>
+
+<!-- ── THEMES ── -->
+<div class="themes-wrap">
+  <div class="row g-4" id="themesGrid">
+
+    <div class="col-6 col-md-4">
+      <div class="theme-card" onclick="pickTheme(this)"
+        data-name="Golden Hour" data-emoji="🌅"
+        data-desc="That light just before the sun dips — the world goes amber and nothing feels ordinary.">
+        <div class="tc-stamp">pick</div>
+        <div class="tc-placeholder">🌅<span class="ph-label">add your photo</span></div>
+        <div class="tc-body">
+          <div class="tc-name">Golden Hour</div>
+          <p class="tc-desc">That light just before the sun dips.</p>
+          <span class="tc-tag">outdoor</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4">
+      <div class="theme-card" onclick="pickTheme(this)"
+        data-name="In Bloom" data-emoji="🌸"
+        data-desc="Petals, pastels, that smell you can't quite name. Spring is loud in the softest way.">
+        <div class="tc-stamp">pick</div>
+        <div class="tc-placeholder" style="background:repeating-linear-gradient(45deg,rgba(74,47,26,0.03) 0,rgba(74,47,26,0.03) 1px,transparent 1px,transparent 12px),#f5e0ec;">
+          🌸<span class="ph-label">add your photo</span>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">In Bloom</div>
+          <p class="tc-desc">Petals, pastels, that smell you can't name.</p>
+          <span class="tc-tag">nature</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4">
+      <div class="theme-card" onclick="pickTheme(this)"
+        data-name="Past Midnight" data-emoji="🌙"
+        data-desc="Stars, stillness and conversations that only happen when it's late.">
+        <div class="tc-stamp">pick</div>
+        <div class="tc-placeholder" style="background:repeating-linear-gradient(45deg,rgba(74,47,26,0.05) 0,rgba(74,47,26,0.05) 1px,transparent 1px,transparent 12px),#1c1c2e;">
+          🌙<span class="ph-label" style="color:rgba(200,200,200,0.3)">add your photo</span>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">Past Midnight</div>
+          <p class="tc-desc">Conversations that only happen when it's late.</p>
+          <span class="tc-tag">night</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4">
+      <div class="theme-card" onclick="pickTheme(this)"
+        data-name="Wanderer" data-emoji="🗺️"
+        data-desc="A new street, a new city, that feeling of being delightfully lost.">
+        <div class="tc-stamp">pick</div>
+        <div class="tc-placeholder" style="background:repeating-linear-gradient(45deg,rgba(74,47,26,0.03) 0,rgba(74,47,26,0.03) 1px,transparent 1px,transparent 12px),#d8e8d0;">
+          🗺️<span class="ph-label">add your photo</span>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">Wanderer</div>
+          <p class="tc-desc">That feeling of being delightfully lost.</p>
+          <span class="tc-tag">travel</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4">
+      <div class="theme-card" onclick="pickTheme(this)"
+        data-name="Slow Sunday" data-emoji="☕"
+        data-desc="Tea going cold, a book face-down, rain on glass. These are the good days.">
+        <div class="tc-stamp">pick</div>
+        <div class="tc-placeholder" style="background:repeating-linear-gradient(45deg,rgba(74,47,26,0.03) 0,rgba(74,47,26,0.03) 1px,transparent 1px,transparent 12px),#e8d5c0;">
+          ☕<span class="ph-label">add your photo</span>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">Slow Sunday</div>
+          <p class="tc-desc">Tea going cold. These are the good days.</p>
+          <span class="tc-tag">everyday</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4">
+      <div class="theme-card" onclick="pickTheme(this)"
+        data-name="Just Today" data-emoji="📄"
+        data-desc="No mood, no filter. Just what happened and how it felt. Your words, your way.">
+        <div class="tc-stamp">pick</div>
+        <div class="tc-placeholder">
+          📄<span class="ph-label">add your photo</span>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">Just Today</div>
+          <p class="tc-desc">No filter. Your words, your way.</p>
+          <span class="tc-tag">free form</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── SAVED ENTRIES ── -->
+<div class="saved-wrap">
+  <h2>your entries</h2>
+  <div id="savedEntries"></div>
+</div>
+
+<!-- ── MODAL ── -->
+<div class="modal fade" id="entryModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width:500px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle">new entry</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="modal-theme-strip">
+          <span class="strip-emoji" id="stripEmoji">📷</span>
+          <span class="strip-name"  id="stripName">Theme</span>
+          <span class="strip-date"  id="stripDate">—</span>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-6">
+            <label>date</label>
+            <input type="date" class="form-control" id="entryDate">
+          </div>
+          <div class="col-6">
+            <label>mood</label>
+            <select class="form-select" id="entryMood">
+              <option value="">how's today?</option>
+              <option>😊 happy</option>
+              <option>🥰 loved</option>
+              <option>😌 peaceful</option>
+              <option>🤩 excited</option>
+              <option>😢 sad</option>
+              <option>😤 frustrated</option>
+              <option>🥱 tired</option>
+              <option>🤔 reflective</option>
+            </select>
+          </div>
+          <div class="col-12">
+            <label>caption</label>
+            <textarea class="form-control" id="entryCaption" rows="3" placeholder="write something — even one line counts."></textarea>
+          </div>
+          <div class="col-12">
+            <label>your photos</label>
+            <div class="upload-zone" onclick="document.getElementById('photoInput').click()">
+              <span class="uz-icon">📷</span>
+              <p>tap to add photos</p>
+              <input type="file" id="photoInput" accept="image/*" multiple onchange="previewPhotos(event)">
+            </div>
+            <div id="photoRow"></div>
+          </div>
+        </div>
+
+        <button class="btn-save" onclick="saveEntry()">save this memory ✦</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-strip" id="toast"></div>
+
+<script>
+  let activeTheme = {};
+  let photoURLs = [];
+  let entries = JSON.parse(localStorage.getItem('memoryEntries') || '[]');
+
+  // ── date from URL ──
+  const params = new URLSearchParams(window.location.search);
+  const dateParam = params.get('date');
+  const dateInput = document.getElementById('entryDate');
+  const dateStamp = document.getElementById('dateStamp');
+
+  function formatDateNice(iso) {
+    if (!iso) return null;
+    const d = new Date(iso + 'T00:00:00');
+    return d.toLocaleDateString('en-IN', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  }
+
+  if (dateParam) {
+    dateStamp.textContent = formatDateNice(dateParam);
+    dateInput.value = dateParam;
+    document.getElementById('stripDate').textContent = dateParam;
+  } else {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.value = today;
+    dateStamp.textContent = formatDateNice(today);
+  }
+
+  // ── pick theme ──
+  function pickTheme(card) {
+    activeTheme = {
+      name:  card.dataset.name,
+      emoji: card.dataset.emoji,
+      desc:  card.dataset.desc,
+    };
+    document.getElementById('modalTitle').textContent = 'new entry — ' + activeTheme.name.toLowerCase();
+    document.getElementById('stripEmoji').textContent = activeTheme.emoji;
+    document.getElementById('stripName').textContent  = activeTheme.name;
+    document.getElementById('stripDate').textContent  = dateInput.value || '—';
+    document.getElementById('entryCaption').value = '';
+    document.getElementById('entryMood').value = '';
+    document.getElementById('photoRow').innerHTML = '';
+    photoURLs = [];
+    new bootstrap.Modal(document.getElementById('entryModal')).show();
+  }
+
+  // ── photo preview ──
+  function previewPhotos(e) {
+    Array.from(e.target.files).forEach(file => {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const base64Url = event.target.result;
+        photoURLs.push(base64Url);
+        const img = document.createElement('img');
+        img.src = base64Url; 
+        img.className = 'photo-thumb';
+        document.getElementById('photoRow').appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // ── save ──
+  function saveEntry() {
+    const date    = document.getElementById('entryDate').value;
+    const caption = document.getElementById('entryCaption').value.trim();
+    const mood    = document.getElementById('entryMood').value;
+    if (!date) { showToast('pick a date first'); return; }
+    entries.unshift({ id: Date.now(), date, theme: activeTheme.name, emoji: activeTheme.emoji, mood, caption, photos: [...photoURLs] });
+    localStorage.setItem('memoryEntries', JSON.stringify(entries));
+    bootstrap.Modal.getInstance(document.getElementById('entryModal')).hide();
+    showToast('saved ✦');
+    renderEntries();
+    setTimeout(() => document.querySelector('.saved-wrap').scrollIntoView({ behavior:'smooth' }), 400);
+  }
+
+  // ── render entries ──
+  function renderEntries() {
+    const c = document.getElementById('savedEntries');
+    if (!entries.length) {
+      c.innerHTML = '<p class="no-entries">nothing saved yet — pick a theme above and start writing.</p>';
+      return;
+    }
+    c.innerHTML = entries.map(e => {
+      const d = new Date(e.date + 'T00:00:00');
+      const ds = d.toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+      const thumb = e.photos.length
+        ? `<img src="${e.photos[0]}" class="er-thumb" alt="">`
+        : `<div class="er-emoji">${e.emoji}</div>`;
+      return `<div class="entry-row">
+        ${thumb}
+        <div class="er-body">
+          <div class="er-date">${ds}${e.mood ? ' · ' + e.mood : ''}</div>
+          <div class="er-title">${e.emoji} ${e.theme}</div>
+          <div class="er-caption">${e.caption || 'no caption'}</div>
+        </div>
+        <button class="er-del" onclick="delEntry(${e.id})">remove</button>
+      </div>`;
+    }).join('');
+  }
+
+  function delEntry(id) {
+    entries = entries.filter(e => e.id !== id);
+    localStorage.setItem('memoryEntries', JSON.stringify(entries));
+    renderEntries();
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2600);
+  }
+
+  renderEntries();
+</script>
+</body>
+</html>

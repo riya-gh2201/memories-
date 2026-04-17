@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <nav class="site-nav">
+        <a class="nav-brand" href="#">memories❤️</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="template-editor.html">Templates</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html" class="active">Contact us</a></li>
+        </ul>
+        <div class="nav-right">
+
+        </div>
+    </nav>
+
+    <style>
+        .creator-card {
+            background-color: #8c5f40;
+            /* Medium brown */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E");
+            border-radius: 6px;
+            padding: 3.5rem 2rem 3rem;
+            position: relative;
+            box-shadow: 6px 10px 25px rgba(0, 0, 0, 0.25), inset 0 0 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid #5a3c26;
+            /* Darker border for the very edge */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .creator-card::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            border: 1.5px dashed rgba(255, 235, 205, 0.4);
+            /* Stitched inner border */
+            border-radius: 4px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .creator-card::before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            /* Slightly longer tape */
+            height: 16px;
+            background: var(--tape, #dbcbba);
+            border-radius: 1px;
+            z-index: 3;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+        }
+
+        .creator-card-title {
+            font-family: 'Crimson Pro', serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #ffffff;
+            /* Pure white for maximum clarity */
+            margin-bottom: 0.4rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+            /* Stronger shadow for contrast */
+            letter-spacing: 0.5px;
+        }
+
+        .creator-card-subtitle {
+            font-family: 'Crimson Pro', serif;
+            font-style: italic;
+            font-weight: 500;
+            /* Increased weight from 300 to 500 for better legibility */
+            font-size: 1.15rem;
+            color: #fcf4eb;
+            /* Brighter, clearer off-white */
+            margin-bottom: 2.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+        }
+
+        .creator-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 8px 16px;
+            border-radius: 3px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600 !important;
+            text-decoration: none;
+            background: transparent;
+            transition: all 0.2s;
+        }
+
+        .btn-github {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #f5e6d3;
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-github:hover {
+            background: rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.5);
+            color: #fff;
+        }
+
+        .btn-linkedin {
+            border: 1px solid rgba(89, 166, 212, 0.6);
+            background: rgba(0, 119, 181, 0.2);
+            color: #8ed0f2;
+        }
+
+        .btn-linkedin:hover {
+            background: rgba(0, 119, 181, 0.4);
+            border-color: #59a6d4;
+            color: #bce5ff;
+        }
+
+        .creator-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+    </style>
+
+    <div class="container mt-5 mb-5">
+        <h2 class="text-center mb-5" style="font-family: 'Reenie Beanie', cursive; font-size: 3rem; color: var(--ink);">
+            MEET THE CREATOR😁</h2>
+        <div class="row justify-content-center g-4">
+
+            <!-- Creator 1 -->
+            <div class="col-md-5 col-lg-4">
+                <div class="creator-card">
+                    <h4 class="creator-card-title">Riya Handa</h4>
+                    <p class="creator-card-subtitle">Full-Stack Developer</p>
+
+                    <div class="d-flex flex-column gap-3 w-100" style="max-width: 250px;">
+                        <a href="https://github.com/Riyahanda" target="_blank" rel="noopener noreferrer"
+                            class="creator-btn btn-github">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                            GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/riya-handa-b9908430a" target="_blank"
+                            rel="noopener noreferrer" class="creator-btn btn-linkedin">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Creator 2 
+            <div class="col-md-5 col-lg-4">
+                <div class="creator-card">
+                    <h4 class="creator-card-title">Creator Two</h4>
+                    <p class="creator-card-subtitle">UI/UX Designer</p>
+
+                    <div class="d-flex flex-column gap-3 w-100" style="max-width: 250px;">
+                        <a href="#" class="creator-btn btn-github">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                            GitHub
+                        </a>
+                        <a href="#" class="creator-btn btn-linkedin">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>-->
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
